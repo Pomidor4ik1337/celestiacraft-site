@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CELESTIA CRAFT — Магазин доната</title>
+    <title>CELESTIA CRAFT — Подписки Prime</title>
     <style>
         :root {
             --bg-color: #0b0b0f;
@@ -116,10 +116,10 @@
 
         .shop-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin-bottom: 40px;
         }
 
@@ -151,7 +151,7 @@
         }
 
         .card-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: bold;
             margin-bottom: 8px;
             color: #fff;
@@ -179,7 +179,7 @@
         }
 
         .features-list li::before {
-            content: "🔥";
+            content: "⚡";
             font-size: 0.8rem;
             margin-right: 8px;
         }
@@ -214,7 +214,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(8px);
             z-index: 1000;
             justify-content: center;
@@ -225,7 +225,7 @@
         .modal-box {
             position: relative;
             width: 100%;
-            max-width: 680px;
+            max-width: 650px;
             background: #0f0f15;
             border: 3px solid var(--purple-bright);
             border-radius: 20px;
@@ -238,8 +238,8 @@
 
         .close-btn {
             position: absolute;
-            top: 0px;
-            right: 8px;
+            top: 5px;
+            right: 12px;
             background: none;
             border: none;
             color: var(--purple-bright);
@@ -338,36 +338,25 @@
             gap: 10px;
         }
 
-        .payment-methods {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
         .pay-btn-img {
-            flex: 1;
-            background: #181824;
-            border: 2px solid var(--purple-bright);
+            width: 100%;
+            background: linear-gradient(135deg, var(--purple-primary), var(--purple-bright));
+            border: none;
             border-radius: 10px;
-            padding: 8px;
+            padding: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.2s ease;
-            height: 55px;
             text-decoration: none;
-        }
-
-        .pay-btn-img img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1rem;
         }
 
         .pay-btn-img:hover {
-            background: rgba(138, 43, 226, 0.2);
-            border-color: var(--purple-primary);
+            filter: brightness(1.15);
             box-shadow: 0 0 15px var(--purple-glow);
             transform: translateY(-2px);
         }
@@ -394,95 +383,74 @@
 
     <header>
         <h1>CELESTIA CRAFT</h1>
-        <div class="subtitle">Хардкорная Анархия — Забери своё преимущество!</div>
+        <div class="subtitle">Улучшенное Выживание — Твоя подписка Prime!</div>
         
         <div class="server-status">
             <div class="status-indicator">
                 <div id="dot" class="status-dot"></div>
-                <span id="status-text">Loading CELESTIA API...</span>
+                <span id="status-text">Загрузка сервера...</span>
             </div>
             <div class="server-ip">celestiacraft.run.place</div>
         </div>
 
         <div class="notice-banner">
-            ⚠️ <strong>Обратите внимание:</strong> донат выдается на 1 вайп со сбросом каждого 1-го числа месяца.
+            💎 <strong>Используй промокод в игре:</strong> Пропиши <code>/code prime</code> и получи <strong>Prime I на 1 день</strong> бесплатно!
         </div>
     </header>
 
     <div class="shop-container">
-        <!-- VIP -->
+        <!-- Prime I -->
         <div class="card">
             <div>
                 <div class="card-header">
-                    <div class="card-title">VIP</div>
-                    <div class="card-price">49.99 ₽</div>
+                    <div class="card-title">PRIME I</div>
+                    <div class="card-price">49 ₽ / 30 дней</div>
                 </div>
                 <ul class="features-list">
-                    <li>Крутой префикс [VIP] и цветной чат</li>
-                    <li>Команды /feed и /heal</li>
-                    <li>Жирный набор /kit vip с алмазкой</li>
-                    <li>Сразу 3 личных региона (/rg)</li>
+                    <li>Стильный префикс [Prime I]</li>
+                    <li>До 3-х точек дома (/sethome)</li>
+                    <li>Доступ к блоку на голову (/hat)</li>
+                    <li>Переносной верстак (/workbench)</li>
+                    <li>Доступ к ежедневному Kit Prime I</li>
                 </ul>
             </div>
-            <!-- Передаем ID товара VIP: 988919 -->
-            <button class="buy-btn" onclick="openDonateModal('VIP', '49.99 ₽', ['Крутой префикс [VIP] и цветной чат', 'Команды /feed и /heal', 'Жирный набор /kit vip с алмазкой', 'Сразу 3 личных региона (/rg)'], 988919)">КУПИТЬ</button>
+            <button class="buy-btn" onclick="openDonateModal('Prime I', '49 ₽', ['Стильный префикс [Prime I]', 'До 3-х точек дома (/sethome)', 'Доступ к блоку на голову (/hat)', 'Переносной верстак (/workbench)', 'Доступ к Kit Prime I'], 989894)">ОФОРМИТЬ ПОДПИСКУ</button>
         </div>
 
-        <!-- Premium -->
+        <!-- Prime II -->
         <div class="card">
             <div>
                 <div class="card-header">
-                    <div class="card-title">PREMIUM</div>
-                    <div class="card-price">99.99 ₽</div>
+                    <div class="card-title">PRIME II</div>
+                    <div class="card-price">99 ₽ / 30 дней</div>
                 </div>
                 <ul class="features-list">
-                    <li>Элитный префикс [Premium]</li>
-                    <li>Полет (/fly), /feed и /heal</li>
-                    <li>Топовый набор /kit premium</li>
-                    <li>Целых 6 личных регионов</li>
-                    <li>Возможность писать цветным текстом</li>
+                    <li>Всё из категории Prime I</li>
+                    <li>До 5 точек дома (/sethome)</li>
+                    <li>Эндер-сундук (/enderchest)</li>
+                    <li>Возможность писать цветным чатом</li>
+                    <li>Улучшенный Kit Prime II</li>
                 </ul>
             </div>
-            <!-- Замени 0 на реальный ID товара PREMIUM из Trade MC -->
-            <button class="buy-btn" onclick="openDonateModal('PREMIUM', '99.99 ₽', ['Элитный префикс [Premium]', 'Полет (/fly), /feed и /heal', 'Топовый набор /kit premium', 'Целых 6 личных регионов', 'Возможность писать цветным текстом'], 0)">КУПИТЬ</button>
+            <button class="buy-btn" onclick="openDonateModal('Prime II', '99 ₽', ['Всё из категории Prime I', 'До 5 точек дома (/sethome)', 'Эндер-сундук (/enderchest)', 'Цветной чат в игре', 'Улучшенный Kit Prime II'], 989895)">ОФОРМИТЬ ПОДПИСКУ</button>
         </div>
 
-        <!-- Admin -->
-        <div class="card">
-            <div>
-                <div class="card-header">
-                    <div class="card-title">АДМИН</div>
-                    <div class="card-price">174.99 ₽</div>
-                </div>
-                <ul class="features-list">
-                    <li>Цветной префикс [D Admin]</li>
-                    <li>Бессмертие (/god), полет (/fly)</li>
-                    <li>Элитный набор /kit admin (чар. ресурсы)</li>
-                    <li>Право мутить нарушителей (по причине)</li>
-                    <li>Чистка инвентаря и /craft</li>
-                </ul>
-            </div>
-            <!-- Замени 0 на реальный ID товара АДМИН из Trade MC -->
-            <button class="buy-btn" onclick="openDonateModal('АДМИН', '174.99 ₽', ['Цветной префикс [D Admin]', 'Бессмертие (/god), полет (/fly)', 'Элитный набор /kit admin (чар. ресурсы)', 'Право мутить нарушителей (по причине)', 'Чистка инвентаря и /craft'], 0)">КУПИТЬ</button>
-        </div>
-
-        <!-- Owner -->
+        <!-- Prime III -->
         <div class="card owner-card">
             <div>
                 <div class="card-header">
-                    <div class="card-title">ВЛАДЕЛЕЦ</div>
-                    <div class="card-price">249.99 ₽</div>
+                    <div class="card-title">PRIME III</div>
+                    <div class="card-price">149 ₽ / 30 дней</div>
                 </div>
                 <ul class="features-list">
-                    <li>Уникальный цветной префикс [D Owner]</li>
-                    <li>Бессмертие, полет и /gm 1</li>
-                    <li>Шлепанье и муты (по причине)</li>
-                    <li>Максимальный кит /kit owner</li>
-                    <li><strong>Полная окупаемость сервера!</strong></li>
+                    <li>Всё из категории Prime I и II</li>
+                    <li>До 10 точек дома (/sethome)</li>
+                    <li>Вход на полный сервер без очереди</li>
+                    <li>Сохранение опыта при смерти</li>
+                    <li>Максимальный Kit Prime III</li>
                 </ul>
             </div>
-            <!-- Замени 0 на реальный ID товара ВЛАДЕЛЕЦ из Trade MC -->
-            <button class="buy-btn" onclick="openDonateModal('ВЛАДЕЛЕЦ', '249.99 ₽', ['Уникальный цветной префикс [D Owner]', 'Бессмертие, полет и /gm 1', 'Шлепанье и муты (по причине)', 'Максимальный кит /kit owner', 'Полная окупаемость сервера!'], 0)">КУПИТЬ</button>
+            <button class="buy-btn" onclick="openDonateModal('Prime III', '149 ₽', ['Всё из категорий Prime I и II', 'До 10 точек дома (/sethome)', 'Вход на полный сервер', 'Сохранение опыта при смерти', 'Максимальный Kit Prime III'], 989896)">ОФОРМИТЬ ПОДПИСКУ</button>
         </div>
     </div>
 
@@ -492,7 +460,7 @@
             <button class="close-btn" onclick="closeModal()">×</button>
 
             <div class="modal-left">
-                <h2 id="modalTitle" class="donate-title">"Название доната"</h2>
+                <h2 id="modalTitle" class="donate-title">"Подписка"</h2>
                 <div class="advantages-box">
                     <p>Преимущества:</p>
                     <ul id="modalAdvantages"></ul>
@@ -507,14 +475,7 @@
                 </div>
 
                 <div class="payment-section">
-                    <div class="payment-methods">
-                        <a href="#" class="pay-btn-img" onclick="processPayment(event)">
-                            <img src="Pictures/sbp.svg" alt="СБП">
-                        </a>
-                        <a href="#" class="pay-btn-img" onclick="processPayment(event)">
-                            <img src="Pictures/mir.svg" alt="МИР">
-                        </a>
-                    </div>
+                    <button class="pay-btn-img" onclick="processPayment(event)">ПЕРЕЙТИ К ОПЛАТЕ</button>
                 </div>
             </div>
         </div>
@@ -525,60 +486,35 @@
     </footer>
 
     <script>
-        // Вкажи числовой ID твоего МАГАЗИНА в Trade MC
         const TRADE_MC_SHOP_ID = "235273"; 
+        const TRADE_MC_DOMAIN = "celestiacraft.trademc.org";
         const SERVER_IP = "celestiacraft.run.place";
 
-        let isServerOnline = false;
         let currentItemId = null;
 
-        // --- ПРОВЕРКА ОНЛАЙНА ЧЕРЕЗ TRADE MC ИЛИ SRVSTAT ---
+        // --- ПРОВЕРКА ОНЛАЙНА ---
         async function checkServerStatus() {
             const dot = document.getElementById("dot");
             const statusText = document.getElementById("status-text");
-            const shopIdNum = parseInt(TRADE_MC_SHOP_ID, 10);
 
-            if (!isNaN(shopIdNum)) {
-                try {
-                    const response = await fetch(`https://api.trademc.org/shop.getOnline?shop=${shopIdNum}&v=3`);
-                    const data = await response.json();
-
-                    if (data.response) {
-                        isServerOnline = true;
-                        dot.className = "status-dot online";
-                        statusText.innerText = `Онлайн: ${data.response.players ?? 0} / ${data.response.max_players ?? 0}`;
-                        return;
-                    }
-                } catch (e) {}
-            }
-
-            // Фоллбек напрямую на адрес сервера
             try {
                 const response = await fetch(`https://api.mcsrvstat.us/3/${SERVER_IP}`);
                 const data = await response.json();
                 if (data.online) {
-                    isServerOnline = true;
                     dot.className = "status-dot online";
                     statusText.innerText = `Онлайн: ${data.players?.online || 0} / ${data.players?.max || 30}`;
                 } else {
-                    isServerOnline = false;
                     dot.className = "status-dot offline";
                     statusText.innerText = "Сервер выключен";
                 }
             } catch (error) {
-                isServerOnline = false;
                 dot.className = "status-dot offline";
-                statusText.innerText = "Ошибка API";
+                statusText.innerText = "Сервер недоступен";
             }
         }
 
         // --- МОДАЛЬНОЕ ОКНО ---
         function openDonateModal(title, price, advantages, itemId) {
-            if (!isServerOnline) {
-                alert("Сервер сейчас выключен! Донат временно недоступен.");
-                return;
-            }
-
             currentItemId = itemId;
             document.getElementById('modalNickname').value = '';
             document.getElementById('modalTitle').innerText = `"${title}"`;
@@ -603,8 +539,8 @@
             if (event.target.id === 'donateModal') closeModal();
         }
 
-        // --- СОЗДАНИЕ КОРЗИНЫ ЧЕРЕЗ API buyItems И ПЕРЕХОД К ОПЛАТЕ С URL ---
-        async function processPayment(event) {
+        // --- ПЕРЕХОД К ОПЛАТЕ В TRADEMC ---
+        function processPayment(event) {
             event.preventDefault();
             const nick = document.getElementById('modalNickname').value.trim();
 
@@ -614,48 +550,18 @@
                 return;
             }
 
-            if (!currentItemId || currentItemId === 0) {
-                alert("Ошибка: не указан ID товара Trade MC!");
+            if (!currentItemId) {
+                alert("Ошибка: Укажите корректный ID товара Trade MC!");
                 return;
             }
 
-            try {
-                // Вызываем метод buyItems из документации
-                const params = new URLSearchParams({
-                    items: `${currentItemId}:1`,
-                    buyer: nick,
-                    v: '3'
-                });
-
-                const response = await fetch(`https://api.trademc.org/shop.buyItems?${params.toString()}`);
-                const data = await response.json();
-
-                if (data.error) {
-                    alert(`Ошибка Trade MC: ${data.error.message}`);
-                    return;
-                }
-
-                if (data.response && data.response.cart_id) {
-                    // Базовый URL страницы, откуда совершается оплата
-                    const baseUrl = window.location.origin + window.location.pathname;
-
-                    // Параметры редиректа
-                    const successUrl = encodeURIComponent(`${baseUrl}?status=success`);
-                    const pendingUrl = encodeURIComponent(`${baseUrl}?status=pending`);
-                    const failUrl    = encodeURIComponent(`${baseUrl}?status=fail`);
-
-                    // Итоговый URL оплаты TradeMC
-                    const payUrl = `https://pay.trademc.org/?cart_id=${data.response.cart_id}&success_url=${successUrl}&pending_url=${pendingUrl}&fail_url=${failUrl}`;
-
-                    window.location.href = payUrl;
-                }
-            } catch (error) {
-                alert("Ошибка подключения к API Trade MC. Попробуйте еще раз.");
-            }
+            // Переход на страницу оплаты поддомена TradeMC с ником и ID выбранной подписки
+            const checkoutUrl = `https://${TRADE_MC_DOMAIN}/?buyer=${encodeURIComponent(nick)}&item=${currentItemId}`;
+            window.location.href = checkoutUrl;
         }
 
         checkServerStatus();
-        setInterval(checkServerStatus, 10000);
+        setInterval(checkServerStatus, 15000);
     </script>
 </body>
 </html>
