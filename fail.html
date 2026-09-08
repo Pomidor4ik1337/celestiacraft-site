@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неудачная оплата — CELESTIA CRAFT</title>
+    <style>
+        :root {
+            --bg-color: #0b0b0f;
+            --purple-primary: #8a2be2;
+            --purple-bright: #9d4edd;
+            --purple-glow: rgba(138, 43, 226, 0.4);
+            --text-muted: #a0a0b0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 20px 20px 20px;
+        }
+
+        header {
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 10px var(--purple-primary), 
+                         0 0 20px var(--purple-primary);
+            margin-bottom: 25px;
+        }
+
+        .divider {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--purple-bright), transparent);
+            box-shadow: 0 0 15px var(--purple-bright);
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: auto 0;
+        }
+
+        .status-message {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #9d4edd;
+            text-shadow: 0 0 15px rgba(157, 78, 221, 0.5);
+            margin-bottom: 40px;
+        }
+
+        .home-btn {
+            display: inline-block;
+            padding: 16px 45px;
+            background: linear-gradient(135deg, #8a2be2, #9d4edd);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 20px rgba(138, 43, 226, 0.5);
+        }
+
+        .home-btn:hover {
+            filter: brightness(1.2);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(157, 78, 221, 0.7);
+        }
+
+        .home-btn:active {
+            transform: scale(0.97);
+        }
+
+        footer {
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CELESTIA CRAFT</h1>
+        <div class="divider"></div>
+    </header>
+
+    <main>
+        <div class="status-message">Оплата прошла неудачно</div>
+        <a href="/" class="home-btn">На главную</a>
+    </main>
+
+    <footer>
+        &copy; 2026 CELESTIA CRAFT. Все права защищены.
+    </footer>
+
+</body>
+</html>
