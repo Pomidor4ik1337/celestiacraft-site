@@ -338,6 +338,15 @@
             gap: 10px;
         }
 
+        .offline-warning {
+            display: none;
+            color: #ef4444;
+            font-size: 0.85rem;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: -5px;
+        }
+
         .pay-btn-img {
             width: 100%;
             background: linear-gradient(135deg, var(--purple-primary), var(--purple-bright));
@@ -359,6 +368,15 @@
             filter: brightness(1.15);
             box-shadow: 0 0 15px var(--purple-glow);
             transform: translateY(-2px);
+        }
+
+        .pay-btn-img:disabled {
+            background: #2a2a35;
+            color: #666;
+            cursor: not-allowed;
+            box-shadow: none;
+            filter: none;
+            transform: none;
         }
 
         footer {
@@ -475,7 +493,8 @@
                 </div>
 
                 <div class="payment-section">
-                    <button class="pay-btn-img" onclick="processPayment(event)">ПЕРЕЙТИ К ОПЛАТЕ</button>
+                    <div id="offlineWarning" class="offline-warning">⚠️ Сервер выключен, покупка недоступна</div>
+                    <button id="paySubmitBtn" class="pay-btn-img" onclick="processPayment(event)">ПЕРЕЙТИ К ОПЛАТЕ</button>
                 </div>
             </div>
         </div>
@@ -493,30 +512,48 @@
     const FAIL_URL = "https://shop.celestiacraft.run.place/fail.html";
 
     let currentItemId = null;
+    let isServerOnline = false;
 
     // --- ПРОВЕРКА ОНЛАЙНА СЕРВЕРА ---
     async function checkServerStatus() {
         const dot = document.getElementById("dot");
         const statusText = document.getElementById("status-text");
+        const payBtn = document.getElementById("paySubmitBtn");
+        const offlineWarn = document.getElementById("offlineWarning");
 
         try {
             const response = await fetch(`https://api.mcsrvstat.us/3/${SERVER_IP}`);
             const data = await response.json();
+
             if (data.online) {
+                isServerOnline = true;
                 dot.className = "status-dot online";
                 statusText.innerText = `Онлайн: ${data.players?.online || 0} / ${data.players?.max || 30}`;
+                if (payBtn) payBtn.disabled = false;
+                if (offlineWarn) offlineWarn.style.display = 'none';
             } else {
+                isServerOnline = false;
                 dot.className = "status-dot offline";
                 statusText.innerText = "Сервер выключен";
+                if (payBtn) payBtn.disabled = true;
+                if (offlineWarn) offlineWarn.style.display = 'block';
             }
         } catch (error) {
+            isServerOnline = false;
             dot.className = "status-dot offline";
             statusText.innerText = "Сервер недоступен";
+            if (payBtn) payBtn.disabled = true;
+            if (offlineWarn) offlineWarn.style.display = 'block';
         }
     }
 
     // --- МОДАЛЬНОЕ ОКНО ---
     function openDonateModal(title, price, advantages, itemId) {
+        if (!isServerOnline) {
+            alert("Сервер выключен, покупка невозможна!");
+            return;
+        }
+
         currentItemId = itemId;
         document.getElementById('modalNickname').value = '';
         document.getElementById('modalTitle').innerText = `"${title}"`;
@@ -541,9 +578,15 @@
         if (event.target.id === 'donateModal') closeModal();
     }
 
-    // --- ПЕРЕХОД К ОПЛАТЕ С ССЫЛКАМИ УСПЕХА / ОШИБКИ ---
+    // --- ПЕРЕХОД К ОПЛАТЕ ---
     async function processPayment(event) {
         event.preventDefault();
+
+        if (!isServerOnline) {
+            alert("Сервер выключен, покупка невозможна!");
+            return;
+        }
+
         const nick = document.getElementById('modalNickname').value.trim();
 
         if (!nick) {
@@ -563,7 +606,6 @@
         payBtn.disabled = true;
 
         try {
-            // Запрос к API Trade MC с передачей всех параметров и редиректов
             const params = new URLSearchParams({
                 shop: TRADE_MC_SHOP_ID,
                 items: `${currentItemId}:1`,
@@ -577,7 +619,6 @@
             const data = await response.json();
 
             if (data.response && data.response.cart_id) {
-                // Прямой переход на форму оплаты
                 window.location.href = `https://pay.trademc.org/?cart_id=${data.response.cart_id}&success_url=${encodeURIComponent(SUCCESS_URL)}&fail_url=${encodeURIComponent(FAIL_URL)}`;
             } else if (data.error) {
                 alert(`Ошибка Trade MC: ${data.error.message || 'Не удалось создать платеж'}`);
