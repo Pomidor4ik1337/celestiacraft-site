@@ -563,7 +563,7 @@
         payBtn.disabled = true;
 
         try {
-            // Запрос к API с передачей редиректов
+            // Запрос к API Trade MC с передачей всех параметров и редиректов
             const params = new URLSearchParams({
                 shop: TRADE_MC_SHOP_ID,
                 items: `${currentItemId}:1`,
@@ -577,7 +577,7 @@
             const data = await response.json();
 
             if (data.response && data.response.cart_id) {
-                // Прямой переход на страницу оплаты со всеми параметрами
+                // Прямой переход на форму оплаты
                 window.location.href = `https://pay.trademc.org/?cart_id=${data.response.cart_id}&success_url=${encodeURIComponent(SUCCESS_URL)}&fail_url=${encodeURIComponent(FAIL_URL)}`;
             } else if (data.error) {
                 alert(`Ошибка Trade MC: ${data.error.message || 'Не удалось создать платеж'}`);
